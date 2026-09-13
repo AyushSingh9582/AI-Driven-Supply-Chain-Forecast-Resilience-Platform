@@ -1,10 +1,9 @@
 # AI-Driven Supply Chain Forecast & Resilience Platform
 
-A working implementation of the project described on your resume: an AI-enabled
-control tower for a 2-echelon supply chain network that forecasts demand and
+an AI-enabled control tower for a 2-echelon supply chain network that forecasts demand and
 quantifies how the network holds up under disruption.
 
-## 1. What was built
+## 1. What We built
 
 ```
 3 Suppliers  --->  1 Central Warehouse  --->  5 Retail Stores
@@ -19,23 +18,7 @@ quantifies how the network holds up under disruption.
 | KPIs | `kpi/kpi_calculator.py` | Computes **service level**, **recovery time**, and **cost impact** for each disruption scenario vs. baseline |
 | Dashboard | `dashboard/control_tower_dashboard.html` | Interactive control-tower view — open this file directly in any browser |
 
-All intermediate and final data is in `outputs/*.csv` so you can inspect every
-step without re-running anything.
-
-## 2. How to run it yourself
-
-```bash
-pip install prophet statsmodels pandas numpy
-python3 data/generate_data.py
-python3 forecasting/forecast.py
-python3 simulation/simulate_disruption.py
-python3 kpi/kpi_calculator.py
-```
-
-Then open `dashboard/control_tower_dashboard.html` in a browser — no server
-needed, the data is embedded in the file.
-
-## 3. The methodology, explained
+## 3. The methodology
 
 ### Step 1 — Demand data
 Real company data wasn't available, so demand was synthesized to look like
@@ -105,7 +88,7 @@ designed, not an industry standard.
 no unaffected supply route to lean on, causing a deeper stockout and more
 expensive emergency expediting.
 
-## 4. Assumptions made (be ready to state these explicitly)
+## 4. Assumptions made
 
 - Starting warehouse inventory = 3 days of average network demand (a "lean"
   network, chosen deliberately so a disruption produces a visible effect —
@@ -115,15 +98,5 @@ expensive emergency expediting.
   day (representing limited air-freight/spot-market capacity)
 - Expediting costs 40% more per unit than normal; a lost sale costs 2x unit
   cost (assumed margin + goodwill)
-- All numbers (costs, capacities, lead times) are assumed/synthesized —
-  clearly label this as illustrative when presenting it, not real company data
+- All numbers (costs, capacities, lead times) are assumed/synthesized 
 
-## 5. How to talk about this in an interview
-
-Be honest that the data is synthetic (interviewers respect this far more
-than pretending it's real) but walk through the **method** as if it were
-real: "I built a simulation that models a lean 2-echelon network, and used
-it to quantify — in dollars and days, not just qualitatively — how much
-worse a port closure is than a single supplier going down. That's the kind
-of business case a resilience/procurement team would use to justify
-diversifying suppliers or holding more buffer stock at a specific node."
